@@ -1,0 +1,102 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<title>Basic javscript Tut1</title>
+</head>
+<body>
+
+<script>
+console.log("Q.1. Write a function for calculating percentage of 4 subjects.")
+function getPerCentOfSub(marks_array,max_sub_marks){
+  var sum = 0;
+  total_out_of=max_sub_marks*marks_array.length;
+  for(var i=0; i < marks_array.length; i++){
+    sum += parseInt(marks_array[i]);
+  }
+  console.log("Percentage is :- "+(sum / total_out_of) * 100)
+}
+getPerCentOfSub([85,45,45,85],100);
+
+function cal(choice,no1,no2) {
+ switch(choice) {
+   case 'add' :
+     console.log("Add is:-"+parseInt(no1+no2));
+     break;
+   case 'sub' :
+     console.log("Sub is:-"+parseInt(no1-no2));
+     break;
+   case 'mul' :
+     console.log("Mul is:-"+parseInt(no1*no2));
+     break;
+   case 'div' :
+      console.log("Div is:-"+parseInt(no1/no2));
+     break;
+ }
+}
+console.log("Q.2. Write a function which - make a Simple Calculator to Add, Subtract, Multiply or Divide    Using switch...case")
+cal('add',20,10);
+cal('sub',20,10);
+cal('mul',20,10);
+cal('div',20,10);
+
+
+console.log("Q.3. Write a function which generates Multiplication Table is  o;f a number.")
+  function genMultiplicationTable(no){
+    console.log("Multiplication Table is ");
+    for (var i = 1; i <=10 ; i++) {
+      console.log(no*i);
+    }
+  }
+  genMultiplicationTable(2);
+
+console.log("Q.4.Write a function for finding number of Digits in a Number")
+  function getLength(number) {
+      console.log("no of digit is "+parseInt(number).toString().length);
+  }
+  getLength(25.30);
+
+console.log("Q.5. Write a function to calculate average of integer array.")
+function getAvgOfIntegerArray(arr){
+  var total = 0;
+  for(var i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+  console.log("Avg of integer array is:-"+total / arr.length);
+}
+getAvgOfIntegerArray([10,20,30]);
+
+console.log("Q.6.Write a function to find largest number in an integer array.")
+  function getLargestNoInIntegerArray(arr){
+    console.log("Largest no on array is:- "+Math.max.apply(null, arr))
+  }
+getLargestNoInIntegerArray([10,20,30])
+
+ console.log("Q.7.Write a function to add elements of two arrays.")
+
+function sumOfTwoArray(arr1,arr2){
+  var opArray = arr1.map(function (num, idx) {
+    return num + arr2[idx];
+  });
+  console.log("Array 1:- "+arr1);
+  console.log("Array 2:- "+arr2);
+  console.log("Combined array:- "+opArray);
+}
+sumOfTwoArray([1,2,3,4],[5,6,7,8]);
+
+console.log("Q.8. Write a function to reverse array elements.")
+
+function reverse (a) {
+  var b = [], counter = 0;
+  for (var i = a.length-1; i >= 0; i -= 1) {
+    b[counter] = a[i];
+    counter += 1;
+  }
+  return b;
+}
+console.log(reverse([5,1,3,2,10]));
+
+</script>
+</body>
+</html>
