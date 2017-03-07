@@ -1,0 +1,114 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<title>OOPS IN JAVASCRIPT</title>
+</head>
+<body>
+
+<script>
+console.log("B] Implement inheritance for Animal, Dog, Human ");
+function Animal(name) {
+   this.name = name;
+}
+
+Animal.prototype.getName = function() {
+    console.log(this.name);
+}
+
+function Mammal(name, hasHair , color) {
+    Animal.call(this, name);
+    this.hasHair = hasHair;
+    this.color = color;
+}
+Mammal.prototype = Object.create(Animal.prototype);
+Mammal.prototype.constructor = Mammal;// use this obj constructor
+
+Mammal.prototype.getDetails = function() {
+    console("Below are Mammal class properties");
+    console.log(this.hasHair);
+    console.log(this.color);
+}
+
+
+function Dog(name) {
+  Mammal.call(this, name);
+}
+
+Dog.prototype = Object.create(Mammal.prototype);
+Dog.prototype.constructor = Dog;
+
+var inst = new Dog('Tommy');
+inst.getName();
+
+var inst = new Mammal('Mammal animals','Yes','Red');
+inst.getName();
+inst.getDetails();
+
+//Human
+function Human(fullName) {
+  this.fullName = fullName;
+}
+Human.prototype.studInfo = function(){
+  console.log("Student Info");
+  console.log("Name:- "+this.fullName);
+  console.log("university:- "+this.university);
+  console.log("dept:- "+this.dept);
+};
+Human.prototype.studName = function(){
+  console.log("Student name is:- " + this.fullName);
+};
+
+function Student(fullName, university, dept) {
+  Human.call(this, fullName);
+   this.university = university;
+   this.dept = dept;
+};
+
+Student.prototype = Object.create(Human.prototype);
+Student.prototype.constructor = Student;
+
+var student = new Student("SANGRAM","Shivaji University", "IT");
+student.studName();
+student.studInfo();
+
+
+console.log("A] Students is array of objects student having properties nam, age, marks etc");
+  var stud_array=[];
+  function addStudentInfo(name,age,s1,s2,s3){
+    var object = {}; //create obj
+    object.name=name;
+    object.age=age;
+    object.subject1=s1;
+    object.subject2=s2;
+    object.subject3=s3;
+    stud_array.push(object);
+  }
+  addStudentInfo("SANGRAM","30","60","60","70");
+  addStudentInfo("KISHOR","40","80","60","70");
+  addStudentInfo("RAVI","20","50","60","70");
+
+  stud_array.search = function (name) {
+    for (var i = 0; i < stud_array.length; i++) {
+      if(stud_array[i].name == name)
+        console.log("Age :",stud_array[i].age);
+    }
+  }
+  stud_array.search("SANGRAM");
+
+  stud_array.getPercentage = function () {
+  for (var i = 0; i < stud_array.length; i++) {
+        console.log(stud_array[i].name+" "+getPerCentOfSub(stud_array[i],300));
+    }
+  }
+
+  function getPerCentOfSub(stud_array,out_of)
+  {
+    sum=parseInt(stud_array['subject1'])+parseInt(stud_array['subject2'])+parseInt(stud_array['subject3']);
+    return (sum /out_of) * 100+"%";
+  }
+  stud_array.getPercentage();
+</script>
+</body>
+</html>
