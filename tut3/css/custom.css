@@ -1,0 +1,30 @@
+.swicth
+{
+  background-color: red;
+  min-height: 400px;
+  min-width: 400px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.switchButton
+{
+  position: absolute;
+  top: 48%;
+  left: 44%;
+  border-radius: 0;
+}
+
+.rows
+{
+  padding:20px;
+  color: #fff;
+}
+.rows ul li:nth-child(even)
+{
+  background: #000;
+}
+.rows ul li:nth-child(odd)
+{
+  background: #808080;
+}

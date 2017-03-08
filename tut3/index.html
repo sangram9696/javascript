@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM and events</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="swicth" id="swicthContainer">
+        <button class="btn btn-primary switchButton" id="switchbutton">OFF</button>
+      </div>
+      <div>
+        <input type="checkbox" id="capture">capture
+      </div>
+      <div>
+        <p id="show-swicth-current-state"></p>
+        <p id="info"></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="rows">
+        <ul id="bcolor">
+          <li>row1</li>
+          <li>row2</li>
+          <li>row3</li>
+          <li>row4</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $( document ).ready(function() {
+    switchDefaultState = "OFF";
+    switchstatus = document.getElementById("show-swicth-current-state");
+    switchButton = document.getElementById("switchbutton");
+    swicth = document.getElementById("swicthContainer");
+    document.getElementById("capture").onclick = function () {
+       toggleSwitchStyle();
+    }
+
+    function updateCurrentState(currentState)
+    {
+      switchstatus.innerHTML = "Switch is "+ currentState;
+      if (currentState == "ON")
+      {
+        document.getElementById('switchbutton').innerHTML="ON";
+        document.getElementById("info").innerHTML = "Hello";
+        setTimeout(function(){ switchStateInfo.innerHTML = ""; }, 5000);
+
+      }
+      else
+      {
+        document.getElementById("info").innerHTML = "";
+        document.getElementById('switchbutton').innerHTML="OFF";
+      }
+    }
+
+    function toggleSwitchStyle()
+    {
+      if(document.getElementById('capture').checked)
+      {
+        switchButton.style.backgroundColor = "green";
+      }
+      else
+      {
+        switchButton.style.backgroundColor = "";
+      }
+    }
+
+    function updateSwitchStatus()
+    {
+      if(switchDefaultState == "OFF")
+      {
+        switchDefaultState = "ON";
+        swicth.style.backgroundColor = "yellow";
+        alternate("#000","#808080");
+      }
+      else
+      {
+        switchDefaultState = "OFF";
+        swicth.style.backgroundColor = "";
+        alternate("#808080","#000");
+      }
+      updateCurrentState(switchDefaultState);
+    }
+
+    switchButton.onclick = function(){
+      updateSwitchStatus();
+    }
+
+    function alternate(c1,c2){
+      if(document.getElementsByTagName){
+        var table = document.getElementById("bcolor");
+        var rows = table.getElementsByTagName("li");
+        for(i = 0; i < rows.length; i++){
+            if(i%2==0){
+              rows[i].style.backgroundColor = c1;
+            }else{
+              rows[i].style.backgroundColor = c2;
+            }
+        }
+      }
+    }
+  });
+
+</script>
+<style>
+  .odd{background-color: white;}
+  .even{background-color: gray;}
+</style>
+</body>
+</html>
