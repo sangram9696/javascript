@@ -4,7 +4,8 @@ SwitchWidget = {
   settings: {
     blackColor : "#000",
     grayColor :"#808080",
-    yellowColorCode:"##FFFF00",
+    greenColorCode:"#008000",
+    yellowColorCode:"#FFFF00",
     switchDefaultState : "OFF",
     switchstatus :"show-swicth-current-state",
     switchButton :"switchbutton",
@@ -77,7 +78,7 @@ SwitchWidget = {
   {
     if(SwitchWidget.getbyID('capture').checked)
     {
-      SwitchWidget.getbyID('switchbutton').style.backgroundColor = "green";
+      SwitchWidget.getbyID('switchbutton').style.backgroundColor = s.greenColorCode;
     }
     else
     {
